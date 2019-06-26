@@ -1,0 +1,17 @@
+version: '2'
+services:
+  ${BRANCH}:
+    image: centos:7
+    volumes:
+       - ./nginx/nginx.git:/usr/share/nginx/html/.git
+       - ./conf:/conf
+       - ./shell:/shell
+    environment:
+       - GIT_BRANCH=${BRANCH}
+       - GIT_DIR=/usr/share/nginx/html/.git
+       - GIT_WORK_TREE=/usr/share/nginx/html/
+       - LANG=zh_CN.gbk
+    tty: true
+#    ports:
+#       - 100:80
+#    commond: shell
